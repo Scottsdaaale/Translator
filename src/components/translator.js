@@ -2,9 +2,11 @@ import { useState } from "react";
 
 function Translator() {
   const [message, setMessage] = useState("");
+  const [selectedLanguageResult, setSelectedLanguageResult] = useState("");
+  const [results, setResults] = useState("")
 
-  const handleChange = (event) => {
-    setMessage(event.target.value);
+  const handleChange = (e) => {
+    setMessage(e.target.value);
   };
 
   function translateToAscii() {
@@ -12,21 +14,24 @@ function Translator() {
     for (let i = 0; i < message.length; i++) {
       arr.push(message.charCodeAt(i));
     }
-    return <h2>{arr.join(" ")}</h2>;
+    return(arr.join(" "))
   }
   function translateToBinary() {
     let strOut = "";
     for (let i = 0; i < message.length; i++) {
       strOut += message[i].charCodeAt(0).toString(2) + " ";
     }
-    return <h2>{strOut}</h2>;
+    return(strOut);
   }
   function handleLanguageSwitch(e) {
-    if (e.target.value == "Ascii") {
-      console.log(translateToAscii());
-    } else {
-      translateToBinary();
-    }
+    console.log(e.target.value)
+    let selectedValue = e.target.value;
+    setSelectedLanguageResult(selectedValue === "Ascii" ? translateToAscii() : translateToBinary())
+  }
+  function handleClick(e) {
+    
+    e.preventDefault();
+    setResults(selectedLanguageResult)
   }
   return (
     <div className="App">
@@ -41,7 +46,14 @@ function Translator() {
           onChange={handleChange}
           value={message}
         ></textarea>
+        {/* <button onClick={postResults}>
+          submit
+        </button> */}
+        <button onClick={handleClick}>fuck you fucking work gay ass beach</button>
       </form>
+      
+      {/* {selectedLanguageResult} */}
+      <h2>{results}</h2>
     </div>
   );
 }
