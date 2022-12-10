@@ -1,25 +1,17 @@
-import {useState} from 'react';
+import React from 'react'
+import Select from 'react-select'
 
-const Test = () => {
-  // 👇️ initial value of empty string (first option)
-  const [selected, setSelected] = useState('');
-
-  const handleChange = event => {
-    console.log('Label 👉️', event.target);
-    console.log(event.target.value);
-    setSelected(event.target.value);
-  };
-
+function Test() {
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
   return (
     <div>
-      <select value={selected} onChange={handleChange}>
-        <option value="">--Choose and option--</option>
-        <option value="apple">Apple 🍏</option>
-        <option value="banana">Banana 🍌</option>
-        <option value="kiwi">Kiwi 🥝</option>
-      </select>
+      <Select options={options}/>
     </div>
-  );
-};
+  )
+}
 
-export default Test;
+export default Test
