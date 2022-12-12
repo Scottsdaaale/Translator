@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+
+
 function Translator() {
   const [message, setMessage] = useState("");
   const [selectedLanguageResult, setSelectedLanguageResult] = useState('')
@@ -40,14 +42,24 @@ function Translator() {
   //   setSelectedLanguageResult(translateToAscii());
   // }, [])
 
+  // function chooseAscii(e) {
+  //   e.preventDefault();
+  //   setResults(translateToAscii());
+  // }
+
+  // function chooseBinary(e) {
+  //   e.preventDefault();
+  //   setResults(translateToBinary());
+  // }
+
   return (
     <div className="App">
       <form>
         <select name="language" onChange={handleLanguageSwitch}>
-          {/* <option value="Default" selected disabled>
-            --Choose language--
-          </option> */}
-          <option value="Ascii" selected>Ascii</option>
+          {/* <option value="Default" selected> */}
+            {/* --Choose language-- */}
+          {/* </option> */}
+          <option value="Ascii">Ascii</option>
           <option value="Binary">Binary</option>
         </select>
         <textarea
@@ -56,9 +68,13 @@ function Translator() {
           onChange={handleChange}
           value={message}
         ></textarea>
-        <button onClick={handleClick}>
-          fuck you fucking work gay ass beach
-        </button>
+        {/* <button onClick={chooseAscii}>Ascii</button>
+        <button onClick={chooseBinary}>Binary</button> */}
+        {<button 
+        onClick={handleClick}
+        >
+          work please
+        </button>}
       </form>
       <h2>{results}</h2>
     </div>

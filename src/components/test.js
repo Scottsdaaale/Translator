@@ -9,7 +9,9 @@ function Test() {
   ]
   return (
     <div>
-      <Select options={options}/>
+      <Select options={options} 
+      // onChange={onChange}
+      />
     </div>
   )
 }
