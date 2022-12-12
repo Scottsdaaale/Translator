@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 
-
-
 function Translator() {
   const [message, setMessage] = useState("");
-  const [selectedLanguageResult, setSelectedLanguageResult] = useState('')
+  const [selectedLanguageResult, setSelectedLanguageResult] = useState("");
   const [results, setResults] = useState(translateToAscii());
-
 
   function handleChange(e) {
     setMessage(e.target.value);
@@ -16,7 +13,7 @@ function Translator() {
     for (let i = 0; i < message.length; i++) {
       arr.push(message.charCodeAt(i));
     }
-    return arr.join(" ")
+    return arr.join(" ");
   }
   function translateToBinary() {
     let strOut = "";
@@ -33,7 +30,7 @@ function Translator() {
     console.log(e.target.value);
     let selectedValue = e.target.value;
     if (selectedValue === "Ascii") {
-      setSelectedLanguageResult(translateToAscii())
+      setSelectedLanguageResult(translateToAscii());
     } else if (selectedValue === "Binary") {
       setSelectedLanguageResult(translateToBinary());
     }
@@ -57,7 +54,7 @@ function Translator() {
       <form>
         <select name="language" onChange={handleLanguageSwitch}>
           {/* <option value="Default" selected> */}
-            {/* --Choose language-- */}
+          {/* --Choose language-- */}
           {/* </option> */}
           <option value="Ascii">Ascii</option>
           <option value="Binary">Binary</option>
@@ -70,11 +67,7 @@ function Translator() {
         ></textarea>
         {/* <button onClick={chooseAscii}>Ascii</button>
         <button onClick={chooseBinary}>Binary</button> */}
-        {<button 
-        onClick={handleClick}
-        >
-          work please
-        </button>}
+        <button onClick={handleClick}>work please</button>
       </form>
       <h2>{results}</h2>
     </div>
