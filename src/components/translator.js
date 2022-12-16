@@ -2,9 +2,13 @@ import { useState, useEffect } from "react";
 
 function Translator() {
   const [message, setMessage] = useState("");
-  const [selectedLanguageResult, setSelectedLanguageResult] = useState("");
-  const [results, setResults] = useState(translateToAscii());
+  const [language, setLanguage] = useState("");
+  const [results, setResults] = useState("");
 
+  function handleLanguageSwitch(e) {
+    let selectedValue = e.target.value;
+    setLanguage(selectedValue);
+  }
   function handleChange(e) {
     setMessage(e.target.value);
   }
@@ -24,38 +28,25 @@ function Translator() {
   }
   function handleClick(e) {
     e.preventDefault();
-    setResults(selectedLanguageResult);
-  }
-  function handleLanguageSwitch(e) {
-    console.log(e.target.value);
-    let selectedValue = e.target.value;
-    if (selectedValue === "Ascii") {
-      setSelectedLanguageResult(translateToAscii());
-    } else if (selectedValue === "Binary") {
-      setSelectedLanguageResult(translateToBinary());
+    if (language === "Ascii") {
+      setResults(translateToAscii(message));
+    } else if (language === "Binary") {
+      setResults(translateToBinary(message));
     }
   }
-  // useEffect(() => {
-  //   setSelectedLanguageResult(translateToAscii());
-  // }, [])
-
-  // function chooseAscii(e) {
-  //   e.preventDefault();
-  //   setResults(translateToAscii());
-  // }
-
-  // function chooseBinary(e) {
-  //   e.preventDefault();
-  //   setResults(translateToBinary());
-  // }
 
   return (
     <div className="App">
-      <form>
-        <select name="language" onChange={handleLanguageSwitch}>
-          {/* <option value="Default" selected> */}
-          {/* --Choose language-- */}
-          {/* </option> */}
+      <form onSubmit={handleClick}>
+        <select
+          name="language"
+          onChange={handleLanguageSwitch}
+          value={language}
+          className="select"
+        >
+          <option value="" disabled>
+            --Choose language--
+          </option>
           <option value="Ascii">Ascii</option>
           <option value="Binary">Binary</option>
         </select>
@@ -64,69 +55,13 @@ function Translator() {
           id="message"
           onChange={handleChange}
           value={message}
+          className="textarea"
         ></textarea>
-        {/* <button onClick={chooseAscii}>Ascii</button>
-        <button onClick={chooseBinary}>Binary</button> */}
-        <button onClick={handleClick}>work please</button>
+        <button type="submit" className="button">Translate</button>
       </form>
-      <h2>{results}</h2>
+      <textarea value={results}></textarea>
     </div>
   );
 }
 
 export default Translator;
-// setSelectedLanguageResult(selectedValue === "Ascii" ? translateToAscii() : translateToBinary())
-
-// const [text, setText] = useState("")
-// const[getFunction, setGetFunction]= useState();
-// const [results, setResults] = useState("");
-
-// function handleText(e){
-//   setText(e.target.value)
-//   if (getFunction) {
-//     setGetFunction(getFunction());
-//   }
-// }
-
-// function a() {
-//   // some logic involving text state variable
-//   return {result of some logic};
-// }
-
-// function b() {
-//   // some logic involving text state variable
-//   return {result of some logic};
-// }
-
-// handleChange(e) {
-//   if (e.target.value == "a") {
-//     setGetFunction(a())
-//   }
-//   else if (e.target.value == "b") {
-//     setGetFunction(b())
-//   }
-// }
-
-// handleClick(e){
-//   e.preventDefault();
-//     setResults(getFunction)
-// }
-
-// return (
-//   <div>
-//     <form>
-//       <select onChange={handleChange}>
-//         <option value="a">a</option>
-//         <option value="b">b</option>
-//       </select>
-//       <textarea
-//           type="text"
-//           id="message"
-//           onChange={handleText}
-//           value={message}
-//         ></textarea>
-//       <button onClick={handleClick}></button>
-//     </form>
-//     <h2>{results}</h2>
-//   </div>
-// )
