@@ -1,0 +1,88 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(31, 48, 126);
+}
+
+.translator-form-container {
+  width: 500px;
+  background-color: white;
+  border-radius: 7px;
+  padding: 30px;
+}
+.wrapper {
+  /* border-radius: 5px; */
+  border: 1px solid rgb(168, 163, 163);
+}
+.wrapper .text-input {
+  display: flex;
+}
+
+.text-input textarea {
+  height: 200px;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  padding: 10px 15px;
+  background: none;
+  resize: none;
+}
+
+.text-input .to-text {
+  border-left: 1px solid rgb(168, 163, 163);
+}
+
+.select {
+  padding: 14px;
+  color: white;
+  /* border-radius: 5px; */
+  font-size: 16px;
+  cursor: pointer;
+  background: rgb(48, 80, 224);
+  margin-bottom: 10px;
+  margin-top: 10px;
+  box-shadow: 3px 3px #ccc;
+}
+
+/* .select:hover {
+  background-color: rgb(32, 57, 165);
+} */
+
+.button {
+  font-size: 16px;
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  /* border-radius: 5px; */
+  background: rgb(48, 80, 224);
+  box-shadow: 3px 3px #ccc;
+}
+
+.button:hover {
+  background: rgb(32, 57, 165);
+}
+
+.header {
+  margin: 0px;
+  padding: 0px;
+  font-size: 30px;
+  height: 130px;
+  text-align: center;
+  color: white;
+  background: rgb(48, 80, 224);
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.header h2 {
+  margin: 0px 0px;
+}
+.header p {
+  font-size: 15px;
+}

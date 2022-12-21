@@ -4,12 +4,9 @@ import { useState } from "react";
 import Translator from "./components/translator";
 
 function App() {
-
-
-
   return (
     <div className="App">
-      <Translator/>
+      <Translator />
     </div>
   );
 }
