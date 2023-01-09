@@ -8,13 +8,15 @@ body {
 
 .translator-form-container {
   width: 500px;
-  background-color: white;
+  background-color: rgb(253, 253, 253);
   border-radius: 7px;
   padding: 30px;
 }
 .wrapper {
   /* border-radius: 5px; */
   border: 1px solid rgb(168, 163, 163);
+  display: flex;
+  justify-content: space-between;
 }
 .wrapper .text-input {
   display: flex;
@@ -35,7 +37,7 @@ body {
   border-left: 1px solid rgb(168, 163, 163);
 }
 
-.select {
+.input-select {
   padding: 14px;
   color: white;
   /* border-radius: 5px; */
@@ -45,6 +47,23 @@ body {
   margin-bottom: 10px;
   margin-top: 10px;
   box-shadow: 3px 3px #ccc;
+}
+
+.output-select {
+  padding: 14px;
+  color: white;
+  /* border-radius: 5px; */
+  font-size: 16px;
+  cursor: pointer;
+  background: rgb(48, 80, 224);
+  margin-bottom: 10px;
+  margin-top: 10px;
+  box-shadow: 3px 3px #ccc;
+
+}
+.input-select,
+.output-select {
+  width: 50%;
 }
 
 /* .select:hover {
