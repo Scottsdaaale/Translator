@@ -1,108 +1,11 @@
 import { useState, useEffect } from "react";
+import { morseCodeToTextAlphabet, textToMorseCodeAlphabet } from "./alphabets";
 
 function Translator() {
   const [message, setMessage] = useState("");
   const [inputLanguage, setInputLanguage] = useState("");
   const [outputLanguage, setOutputLanguage] = useState("");
   const [results, setResults] = useState("");
-
-  const morseCodeToTextAlphabet = {
-    '.-':     'a',
-    '-...':   'b',
-    '-.-.':   'c',
-    '-..':    'd',
-    '.':      'e',
-    '..-.':   'f',
-    '--.':    'g',
-    '....':   'h',
-    '..':     'i',
-    '.---':   'j',
-    '-.-':    'k',
-    '.-..':   'l',
-    '--':     'm',
-    '-.':     'n',
-    '---':    'o',
-    '.--.':   'p',
-    '--.-':   'q',
-    '.-.':    'r',
-    '...':    's',
-    '-':      't',
-    '..-':    'u',
-    '...-':   'v',
-    '.--':    'w',
-    '-..-':   'x',
-    '-.--':   'y',
-    '--..':   'z',
-    '.----':  '1',
-    '..---':  '2',
-    '...--':  '3',
-    '....-':  '4',
-    '.....':  '5',
-    '-....':  '6',
-    '--...':  '7',
-    '---..':  '8',
-    '----.':  '9',
-    '-----':  '0',
-  };
-
-  const textToMorseCodeAlphabet= { 
-    a: ".-",
-    b: "-...",
-    c: "-.-.",
-    d: "-..",
-    e: ".",
-    f: "..-.",
-    g: "--.",
-    h: "....",
-    i: "..",
-    j: ".---",
-    k: "-.-",
-    l: ".-..",
-    m: "--",
-    n: "-.",
-    o: "---",
-    p: ".--.",
-    q: "--.-",
-    r: ".-.",
-    s: "...",
-    t: "-",
-    u: "..-",
-    v: "...-",
-    w: ".--",
-    x: "-..-",
-    y: "-.--",
-    z: "--..",
-    1: ".----",
-    2: "..---",
-    3: "...--",
-    4: "....-",
-    5: ".....",
-    6: "-....",
-    7: "--...",
-    8: "---..",
-    9: "----.",
-    0: "-----",
-    ".": ".-.-.-",
-    ",": "--..--",
-    "?": "..--..",
-    "'": ".----.",
-    "!": "-.-.--",
-    "/": "-..-.",
-    "(": "-.--.",
-    ")": "-.--.-",
-    "&": ".-...",
-    ":": "---...",
-    ";": "-.-.-.",
-    "=": "-...-",
-    "+": ".-.-.",
-    "-": "-....-",
-    _: "..--.-",
-    '"': ".-..-.",
-    $: "...-..-",
-    "@": ".--.-.",
-    " ": " ",
-    "": "",
-  };
 
   /////////////////////////////////////////////////////////// Event Handlers //////////////////////////////////////////////////////////
   function handleLanguageChange(e, type) {
@@ -119,39 +22,53 @@ function Translator() {
   function handleClick(e) {
     e.preventDefault();
     if (inputLanguage === "Ascii") {
-      if (outputLanguage === "Text") {
-        setResults(translateAsciiToText(message));
-      } else if (outputLanguage === "Binary") {
-        translateAsciiToBinary(message);
-      } else if (outputLanguage === "Morse Code") {
-        translateAsciiToMorseCode(message);
-      } 
+      handleAsciiClick();
     } else if (inputLanguage === "Binary") {
-      if (outputLanguage === "Text") {
-        setResults(translateBinaryToText(message));
-      } else if (outputLanguage === "Ascii") {
-        translateBinaryToAscii(message);
-      } else if (outputLanguage === "Morse Code") {
-        translateBinaryToMorseCode(message);
-      } 
+      handleBinaryClick();
     } else if (inputLanguage === "Morse Code") {
-      if(outputLanguage === "Text") {
-        setResults(translateMorseCodeToText(message));
-      } else if (outputLanguage === "Ascii") {
-        translateMorseCodeToAscii(message)
-      } else if (outputLanguage === "Binary") {
-        translateMorseCodeToBinary(message)
-      }
+      handleMorseClick();
     } else if (inputLanguage === "Text") {
-      if (outputLanguage === "Ascii") {
-        setResults(translateToAscii(message))
-      } else if (outputLanguage === "Binary") {
-        setResults(translateToBinary(message));
-      } else if (outputLanguage === "Morse Code") {
-        setResults(translateToMorseCode(message))
-      }
+      handleTextClick();
+    }
+  }
 
+  function handleAsciiClick() {
+    if (outputLanguage === "Text") {
+      setResults(translateAsciiToText(message));
+    } else if (outputLanguage === "Binary") {
+      translateAsciiToBinary(message);
+    } else if (outputLanguage === "Morse Code") {
+      translateAsciiToMorseCode(message);
+    }
+  }
 
+  function handleBinaryClick() {
+    if (outputLanguage === "Text") {
+      setResults(translateBinaryToText(message));
+    } else if (outputLanguage === "Ascii") {
+      translateBinaryToAscii(message);
+    } else if (outputLanguage === "Morse Code") {
+      translateBinaryToMorseCode(message);
+    }
+  }
+
+  function handleMorseClick() {
+    if (outputLanguage === "Text") {
+      setResults(translateMorseCodeToText(message));
+    } else if (outputLanguage === "Ascii") {
+      translateMorseCodeToAscii(message);
+    } else if (outputLanguage === "Binary") {
+      translateMorseCodeToBinary(message);
+    }
+  }
+
+  function handleTextClick() {
+    if (outputLanguage === "Ascii") {
+      setResults(translateToAscii(message));
+    } else if (outputLanguage === "Binary") {
+      setResults(translateToBinary(message));
+    } else if (outputLanguage === "Morse Code") {
+      setResults(translateToMorseCode(message));
     }
   }
   /////////////////////////////////////////////////////////// Translation functions ///////////////////////////////////////////////////////////
@@ -176,8 +93,9 @@ function Translator() {
     let strOut = "";
     for (var i = 0; i < messageToTranslate.length; i++) {
       strOut +=
-      textToMorseCodeAlphabet[messageToTranslate.charAt(i).toLocaleLowerCase()] +
-        " ";
+        textToMorseCodeAlphabet[
+          messageToTranslate.charAt(i).toLocaleLowerCase()
+        ] + " ";
     }
     return strOut;
   }
@@ -203,22 +121,21 @@ function Translator() {
     }
     return strOut;
   }
-  function translateMorseCodeToText() {
-    
-    // Initialize an empty output string
-    let output = "";
-
-    // Split the input string into an array of morse code characters
-    const inputArray = message.split(" ");
-
-    // Loop through the array and use the dictionary to look up and append the corresponding text character to the output string
-    for (const morseCodeChar of inputArray) {
-      output += morseCodeToTextAlphabet[morseCodeChar];
+  function translateMorseCodeToText(str) {
+    let messageToTranslate = str || message;
+    let arr = messageToTranslate.split(" ");
+    let text = "";
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] in morseCodeToTextAlphabet) {
+        text += morseCodeToTextAlphabet[arr[i]];
+      }
+      // if two spaces together means it's the end of the word
+      if (arr[i + 1] === "" && arr[i + 2] === "") {
+        text += " ";
+        i++;
+      }
     }
-
-    // Return the output string
-    console.log(output);
-    return output;
+    return text;
   }
   /////////////////////////////////////////////////////////// Translate From X to Y Functions //////////////////////////////////////////////////////////
 
@@ -315,3 +232,11 @@ export default Translator;
 
 //bug log
 // Something is wrong with morse code.
+
+//Change log
+//Instead of using hard-coded dictionaries to store the mappings between characters and Morse code,
+//you could move them to a separate file that could be imported where needed, which would make it
+//easy to update or extend the mappings without modifying the core functionality.
+//The handleClick function is quite large and could be broken down into smaller, more specific functions for readability.
+//There is no validation for the input and output languages, it could be added to prevent unexpected results.
+//Additionally, the input and output languages are being stored as state, but aren't being used in the translate function.
