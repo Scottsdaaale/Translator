@@ -32,6 +32,8 @@ function Translator() {
     }
   }
 
+  
+
   function handleAsciiClick() {
     if (outputLanguage === "Text") {
       setResults(translateAsciiToText(message));
@@ -234,9 +236,5 @@ export default Translator;
 // Something is wrong with morse code.
 
 //Change log
-//Instead of using hard-coded dictionaries to store the mappings between characters and Morse code,
-//you could move them to a separate file that could be imported where needed, which would make it
-//easy to update or extend the mappings without modifying the core functionality.
-//The handleClick function is quite large and could be broken down into smaller, more specific functions for readability.
 //There is no validation for the input and output languages, it could be added to prevent unexpected results.
 //Additionally, the input and output languages are being stored as state, but aren't being used in the translate function.
