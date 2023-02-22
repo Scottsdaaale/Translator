@@ -3,20 +3,45 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: rgb(2, 206, 104);
+  background-color: var(--secondary);
+  font-family: Georgia, serif;
 }
 
+:root {
+  --main: #0b3e76;
+  --secondary: #194473;
+}
 .translator-form-container {
-  width: 500px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   background-color: rgb(253, 253, 253);
   border-radius: 7px;
   padding: 30px;
 }
+.header {
+  margin: 0px;
+  padding: 0px;
+  font-size: 30px;
+  height: 130px;
+  text-align: center;
+  color: white;
+  background: var(--main);
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.header h1 {
+  padding: 1px;
+}
+.header p {
+  font-size: 15px;
+}
+
 .wrapper {
-  /* border-radius: 5px; */
   border: 1px solid rgb(168, 163, 163);
   display: flex;
   justify-content: space-between;
+  border-radius: 2px;
 }
 .wrapper .text-input {
   display: flex;
@@ -37,38 +62,29 @@ body {
   border-left: 1px solid rgb(168, 163, 163);
 }
 
-.input-select {
-  padding: 14px;
-  color: white;
-  /* border-radius: 5px; */
-  font-size: 16px;
-  cursor: pointer;
-  background: rgb(48, 224, 136);
-  margin-bottom: 10px;
-  margin-top: 10px;
-  box-shadow: 3px 3px #ccc;
+.input-output-container {
+  display: flex;
+  gap: 10%;
+  border-radius: 100px;
 }
 
+.input-select,
 .output-select {
   padding: 14px;
   color: white;
-  /* border-radius: 5px; */
   font-size: 16px;
   cursor: pointer;
-  background: rgb(48, 224, 136);
+  background: var(--main);
   margin-bottom: 10px;
   margin-top: 10px;
-  box-shadow: 3px 3px #ccc;
-
+  /* box-shadow: 3px 3px #ccc; */
 }
+
 .input-select,
 .output-select {
   width: 50%;
+  border: none;
 }
-
-/* .select:hover {
-  background-color: rgb(32, 57, 165);
-} */
 
 .button {
   font-size: 16px;
@@ -79,29 +95,10 @@ body {
   outline: none;
   cursor: pointer;
   color: white;
-  /* border-radius: 5px; */
-  background: rgb(48, 224, 136);
-  box-shadow: 3px 3px #ccc;
+  background: var(--main);
+  /* box-shadow: 3px 3px #ccc; */
 }
 
 .button:hover {
   background: rgb(32, 57, 165);
-}
-
-.header {
-  margin: 0px;
-  padding: 0px;
-  font-size: 30px;
-  height: 130px;
-  text-align: center;
-  color: white;
-  background: rgb(48, 224, 136);
-  margin-bottom: 5px;
-  margin-top: 5px;
-}
-.header h2 {
-  margin: 0px 0px;
-}
-.header p {
-  font-size: 15px;
 }
