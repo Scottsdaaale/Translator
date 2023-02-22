@@ -32,8 +32,6 @@ function Translator() {
     }
   }
 
-  
-
   function handleAsciiClick() {
     if (outputLanguage === "Text") {
       setResults(translateAsciiToText(message));
@@ -172,38 +170,39 @@ function Translator() {
   return (
     <div className="translator-form-container">
       <div className="header">
-        <h2>Translator</h2>
-        <p>by Scotty Peterson</p>
+        <h1>Translator</h1>
       </div>
       <form onSubmit={handleClick}>
-        <select
-          name="input-language"
-          onChange={(e) => handleLanguageChange(e, "input")}
-          value={inputLanguage}
-          className="input-select"
-        >
-          <option value="" disabled>
-            Choose Language
-          </option>
-          <option value="Text">Text</option>
-          <option value="Ascii">Ascii</option>
-          <option value="Binary">Binary</option>
-          <option value="Morse Code">Morse Code</option>
-        </select>
-        <select
-          name="output-language"
-          onChange={(e) => handleLanguageChange(e, "output")}
-          value={outputLanguage}
-          className="output-select"
-        >
-          <option value="" disabled>
-            Choose Language
-          </option>
-          <option value="Text">Text</option>
-          <option value="Ascii">Ascii</option>
-          <option value="Binary">Binary</option>
-          <option value="Morse Code">Morse Code</option>
-        </select>
+        <div className="input-output-container">
+          <select
+            name="input-language"
+            onChange={(e) => handleLanguageChange(e, "input")}
+            value={inputLanguage}
+            className="input-select"
+          >
+            <option value="" disabled>
+              Choose Language
+            </option>
+            <option value="Text">Text</option>
+            <option value="Ascii">Ascii</option>
+            <option value="Binary">Binary</option>
+            <option value="Morse Code">Morse Code</option>
+          </select>
+          <select
+            name="output-language"
+            onChange={(e) => handleLanguageChange(e, "output")}
+            value={outputLanguage}
+            className="output-select"
+          >
+            <option value="" disabled>
+              Choose Language
+            </option>
+            <option value="Text">Text</option>
+            <option value="Ascii">Ascii</option>
+            <option value="Binary">Binary</option>
+            <option value="Morse Code">Morse Code</option>
+          </select>
+        </div>
         <div className="wrapper">
           <div className="text-input">
             <textarea
